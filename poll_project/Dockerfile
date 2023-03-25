@@ -1,11 +1,10 @@
 FROM python:3.9
+ENV PYTHONDONTWRITEBYTECODE 1
 
-WORKDIR /app
+WORKDIR /project
 
-COPY requirements.txt .
+COPY ./requirements.txt /project/
+RUN pip install -r /project/requirements.txt
 
-RUN pip install -r requirements.txt
+COPY . /project/
 
-COPY . .
-
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
