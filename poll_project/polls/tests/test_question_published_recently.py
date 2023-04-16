@@ -11,7 +11,7 @@ def test_was_published_recently_with_future_question():
     time = timezone.now() + datetime.timedelta(days=30)
     future_question = QuestionFactory.create(pub_date=time)
     assert future_question.was_published_recently() is False
-    
+
 @pytest.mark.django_db
 def test_was_published_recently_with_old_question():
     time = timezone.now() - datetime.timedelta(days=2, minutes=60)
