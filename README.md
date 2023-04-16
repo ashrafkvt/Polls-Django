@@ -2,4 +2,4 @@
 
 ## Tech stack
 
-Python, Django, DTL, Docker
+Python, Django, DTL, Docker, pytest, factory-boy
