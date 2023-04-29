@@ -6,5 +6,4 @@ from django.urls import reverse
 def test_index_view(client):
     url = reverse('polls:index')
     response = client.get(url)
-    breakpoint()
     assert response.status_code == 200
