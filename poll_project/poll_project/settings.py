@@ -15,6 +15,7 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 from django.conf import settings
+from celery.schedules import crontab
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -113,9 +114,22 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# celery settings
+# Celery settings
 
 CELERY_BROKER_URL = 'amqp://localhost'
+
+# Celery beat schedule
+
+CELERY_BEAT_SCHEDULE = {
+      'add-every-30-seconds': {
+        'task': 'polls.tasks.add',
+        'schedule': crontab(minute="*", hour="*"),
+        'args': (16, 16),
+        'options': {
+            'expires': 15.0,
+        },
+    },
+}
 
 
 # Internationalization
